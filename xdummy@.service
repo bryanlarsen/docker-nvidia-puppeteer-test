@@ -1,0 +1,10 @@
+[Unit]
+Description=virtual frame buffer X server for display :%I
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/Xorg -noreset -nolisten tcp +extension GLX +extension RANDR +extension RENDER -logfile /var/log/xdummy-%i.log -config /etc/X11/xdummy.conf :%i
+
+[Install]
+WantedBy=multi-user.target
+
